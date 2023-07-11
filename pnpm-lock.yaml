@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@electron-toolkit/preload': ^2.0.0
@@ -31,8 +31,8 @@ specifiers:
   vue-tsc: ^1.6.5
 
 dependencies:
-  '@electron-toolkit/preload': registry.npmmirror.com/@electron-toolkit/preload/2.0.0_electron@24.6.2
-  '@electron-toolkit/utils': registry.npmmirror.com/@electron-toolkit/utils/1.0.2_electron@24.6.2
+  '@electron-toolkit/preload': 2.0.0_electron@24.6.2
+  '@electron-toolkit/utils': 1.0.2_electron@24.6.2
   '@icon-park/vue-next': 1.4.2_vue@3.3.4
   electron-updater: 5.3.0
   pinia: 2.1.4_typescript@5.1.6+vue@3.3.4
@@ -40,16 +40,16 @@ dependencies:
   vue-router: 4.2.4_vue@3.3.4
 
 devDependencies:
-  '@electron-toolkit/tsconfig': registry.npmmirror.com/@electron-toolkit/tsconfig/1.0.1_@types+node@18.16.19
+  '@electron-toolkit/tsconfig': 1.0.1_@types+node@18.16.19
   '@electron/notarize': 1.2.4
   '@rushstack/eslint-patch': 1.3.2
   '@types/node': 18.16.19
   '@vitejs/plugin-vue': 4.2.3_vite@4.4.2+vue@3.3.4
-  '@vue/eslint-config-prettier': 7.1.0_eslint@8.44.0+prettier@2.8.8
-  '@vue/eslint-config-typescript': 11.0.3_20ce795381eb6afeee39570173c79106
+  '@vue/eslint-config-prettier': 7.1.0_l2g4hdc3qxfyjvmwqtjxr3dzku
+  '@vue/eslint-config-typescript': 11.0.3_edhhsu4b5nvp53rzk4axhr4ray
   electron: 24.6.2
   electron-builder: 23.6.0
-  electron-vite: registry.npmmirror.com/electron-vite/1.0.24_vite@4.4.2
+  electron-vite: 1.0.24_vite@4.4.2
   eslint: 8.44.0
   eslint-plugin-vue: 9.15.1_eslint@8.44.0
   less: 4.1.3
@@ -58,7 +58,7 @@ devDependencies:
   typescript: 5.1.6
   unplugin-auto-import: 0.16.6
   unplugin-vue-components: 0.25.1_vue@3.3.4
-  vite: 4.4.2_@types+node@18.16.19+less@4.1.3
+  vite: 4.4.2_qqpmyjbxvdgzph7rfvsxj3adxy
   vue: 3.3.4
   vue-tsc: 1.8.4_typescript@5.1.6
 
@@ -321,6 +321,31 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
+
+  /@electron-toolkit/preload/2.0.0_electron@24.6.2:
+    resolution: {integrity: sha512-zpZDzbqJTZQC5d4LRs2EKruKWnqah+T75s+niBYFemYLtiW5TTZcWi3Q8UxHqnwTudDMuWJb233aaS2yjx3Xiw==, registry: http://registry.npm.oa.com/}
+    peerDependencies:
+      electron: '>=13.0.0'
+    dependencies:
+      electron: 24.6.2
+    dev: false
+
+  /@electron-toolkit/tsconfig/1.0.1_@types+node@18.16.19:
+    resolution: {integrity: sha512-M0Mol3odspvtCuheyujLNAW7bXq7KFNYVMRtpjFa4ZfES4MuklXBC7Nli/omvc+PRKlrklgAGx3l4VakjNo8jg==, registry: http://registry.npm.oa.com/}
+    peerDependencies:
+      '@types/node': '*'
+    dependencies:
+      '@types/node': 18.16.19
+    dev: true
+
+  /@electron-toolkit/utils/1.0.2_electron@24.6.2:
+    resolution: {integrity: sha512-EHqVijVPdjBJBivxJH5E/Gu6Dzd5GfoUH0Ilbtx+EQarwaeJLPLxRM5DzD54uuhs1b8TGDI7uMYmcJW2CKrijg==, registry: http://registry.npm.oa.com/}
+    peerDependencies:
+      electron: '>=13.0.0'
+    dependencies:
+      electron: 24.6.2
+      jszip: 3.10.1
+    dev: false
 
   /@electron/get/2.0.2:
     resolution: {integrity: sha512-eFZVFoRXb3GFGd7Ak7W4+6jBl9wBtiZ4AaYOse97ej6mKj5tkyO0dUnUChs1IhJZtx1BENo4/p4WUTXpi6vT+g==}
@@ -1053,7 +1078,7 @@ packages:
       '@types/node': 18.16.19
     optional: true
 
-  /@typescript-eslint/eslint-plugin/5.62.0_5ecff7f037aff59d968c3305e554a245:
+  /@typescript-eslint/eslint-plugin/5.62.0_l3h7p4bxv72z3fumgmc6kvfciu:
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1065,10 +1090,10 @@ packages:
         optional: true
     dependencies:
       '@eslint-community/regexpp': 4.5.1
-      '@typescript-eslint/parser': 5.62.0_eslint@8.44.0+typescript@5.1.6
+      '@typescript-eslint/parser': 5.62.0_iqf7tbmerllfqanu4l3d6aqdn4
       '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/type-utils': 5.62.0_eslint@8.44.0+typescript@5.1.6
-      '@typescript-eslint/utils': 5.62.0_eslint@8.44.0+typescript@5.1.6
+      '@typescript-eslint/type-utils': 5.62.0_iqf7tbmerllfqanu4l3d6aqdn4
+      '@typescript-eslint/utils': 5.62.0_iqf7tbmerllfqanu4l3d6aqdn4
       debug: 4.3.4
       eslint: 8.44.0
       graphemer: 1.4.0
@@ -1081,7 +1106,7 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/parser/5.62.0_eslint@8.44.0+typescript@5.1.6:
+  /@typescript-eslint/parser/5.62.0_iqf7tbmerllfqanu4l3d6aqdn4:
     resolution: {integrity: sha512-VlJEV0fOQ7BExOsHYAGrgbEiZoi8D+Bl2+f6V2RrXerRSylnp+ZBHmPvaIa8cz0Ajx7WO7Z5RqfgYg7ED1nRhA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1109,7 +1134,7 @@ packages:
       '@typescript-eslint/visitor-keys': 5.62.0
     dev: true
 
-  /@typescript-eslint/type-utils/5.62.0_eslint@8.44.0+typescript@5.1.6:
+  /@typescript-eslint/type-utils/5.62.0_iqf7tbmerllfqanu4l3d6aqdn4:
     resolution: {integrity: sha512-xsSQreu+VnfbqQpW5vnCJdq1Z3Q0U31qiWmRhr98ONQmcp/yhiPJFPq8MXiJVLiksmOKSjIldZzkebzHuCGzew==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1120,7 +1145,7 @@ packages:
         optional: true
     dependencies:
       '@typescript-eslint/typescript-estree': 5.62.0_typescript@5.1.6
-      '@typescript-eslint/utils': 5.62.0_eslint@8.44.0+typescript@5.1.6
+      '@typescript-eslint/utils': 5.62.0_iqf7tbmerllfqanu4l3d6aqdn4
       debug: 4.3.4
       eslint: 8.44.0
       tsutils: 3.21.0_typescript@5.1.6
@@ -1155,7 +1180,7 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/utils/5.62.0_eslint@8.44.0+typescript@5.1.6:
+  /@typescript-eslint/utils/5.62.0_iqf7tbmerllfqanu4l3d6aqdn4:
     resolution: {integrity: sha512-n8oxjeb5aIbPFEtmQxQYOLI0i9n5ySBEY/ZEHHZqKQSFnxio1rv6dthascc9dLuwrL0RC5mPCxB7vnAVGAYWAQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1190,7 +1215,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.2_@types+node@18.16.19+less@4.1.3
+      vite: 4.4.2_qqpmyjbxvdgzph7rfvsxj3adxy
       vue: 3.3.4
     dev: true
 
@@ -1250,7 +1275,7 @@ packages:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
     dev: false
 
-  /@vue/eslint-config-prettier/7.1.0_eslint@8.44.0+prettier@2.8.8:
+  /@vue/eslint-config-prettier/7.1.0_l2g4hdc3qxfyjvmwqtjxr3dzku:
     resolution: {integrity: sha512-Pv/lVr0bAzSIHLd9iz0KnvAr4GKyCEl+h52bc4e5yWuDVtLgFwycF7nrbWTAQAS+FU6q1geVd07lc6EWfJiWKQ==}
     peerDependencies:
       eslint: '>= 7.28.0'
@@ -1258,11 +1283,11 @@ packages:
     dependencies:
       eslint: 8.44.0
       eslint-config-prettier: 8.8.0_eslint@8.44.0
-      eslint-plugin-prettier: 4.2.1_828c11c77cea18acf6cec0fa4eabd791
+      eslint-plugin-prettier: 4.2.1_qkgbdr345imkz5woyd5e5k6xse
       prettier: 2.8.8
     dev: true
 
-  /@vue/eslint-config-typescript/11.0.3_20ce795381eb6afeee39570173c79106:
+  /@vue/eslint-config-typescript/11.0.3_edhhsu4b5nvp53rzk4axhr4ray:
     resolution: {integrity: sha512-dkt6W0PX6H/4Xuxg/BlFj5xHvksjpSlVjtkQCpaYJBIEuKj2hOVU7r+TIe+ysCwRYFz/lGqvklntRkCAibsbPw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1273,8 +1298,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/eslint-plugin': 5.62.0_5ecff7f037aff59d968c3305e554a245
-      '@typescript-eslint/parser': 5.62.0_eslint@8.44.0+typescript@5.1.6
+      '@typescript-eslint/eslint-plugin': 5.62.0_l3h7p4bxv72z3fumgmc6kvfciu
+      '@typescript-eslint/parser': 5.62.0_iqf7tbmerllfqanu4l3d6aqdn4
       eslint: 8.44.0
       eslint-plugin-vue: 9.15.1_eslint@8.44.0
       typescript: 5.1.6
@@ -1430,10 +1455,10 @@ packages:
     resolution: {integrity: sha512-dQYDuqm/rmy8GSCE6Xl/3ShJg6Ab4bZJMT8KaTKGzT436gl1DN4REP3FCWfXoh75qGTJ+u+WsdnnpO9Jl8nyMA==}
     engines: {node: '>=14.0.0'}
     dependencies:
+      7zip-bin: 5.1.1
       '@develar/schema-utils': 2.6.5
       '@electron/universal': 1.2.1
       '@malept/flatpak-bundler': 0.4.0
-      7zip-bin: 5.1.1
       async-exit-hook: 2.0.1
       bluebird-lst: 1.0.9
       builder-util: 23.6.0
@@ -1625,9 +1650,9 @@ packages:
   /builder-util/23.6.0:
     resolution: {integrity: sha512-QiQHweYsh8o+U/KNCZFSvISRnvRctb8m/2rB2I1JdByzvNKxPeFLlHFRPQRXab6aYeXc18j9LpsDLJ3sGQmWTQ==}
     dependencies:
+      7zip-bin: 5.1.1
       '@types/debug': 4.1.8
       '@types/fs-extra': 9.0.13
-      7zip-bin: 5.1.1
       app-builder-bin: 4.0.0
       bluebird-lst: 1.0.9
       builder-util-runtime: 9.1.1
@@ -2083,6 +2108,28 @@ packages:
       - supports-color
     dev: false
 
+  /electron-vite/1.0.24_vite@4.4.2:
+    resolution: {integrity: sha512-ZGQn7ZX+CmicZ8KfiuWb6RGdBAp/mGqRy1K9Krp+6qOMn5vyH8UG2CGyEL9GQgZDJQObF4mxAhRVtGUmLd75Eg==, registry: http://registry.npm.oa.com/}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': ^1.0.0
+      vite: ^3.0.0 || ^4.0.0
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+    dependencies:
+      '@babel/core': 7.22.8
+      '@babel/plugin-transform-arrow-functions': 7.22.5_@babel+core@7.22.8
+      cac: 6.7.14
+      esbuild: 0.17.19
+      magic-string: 0.30.1
+      picocolors: 1.0.0
+      vite: 4.4.2_qqpmyjbxvdgzph7rfvsxj3adxy
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /electron/24.6.2:
     resolution: {integrity: sha512-HC0lE1u9GYfj82Tt60Y/T+ELTdBKlvfPwLCzB6mWsyqYvrb2mtBy5fBSNtlfT0MWZOMh6J2of/AEYaLitniNCQ==}
     engines: {node: '>= 12.20.55'}
@@ -2209,7 +2256,7 @@ packages:
       eslint: 8.44.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_828c11c77cea18acf6cec0fa4eabd791:
+  /eslint-plugin-prettier/4.2.1_qkgbdr345imkz5woyd5e5k6xse:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -3978,7 +4025,7 @@ packages:
     dev: true
     optional: true
 
-  /vite/4.4.2_@types+node@18.16.19+less@4.1.3:
+  /vite/4.4.2_qqpmyjbxvdgzph7rfvsxj3adxy:
     resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4187,63 +4234,4 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-    dev: true
-
-  registry.npmmirror.com/@electron-toolkit/preload/2.0.0_electron@24.6.2:
-    resolution: {integrity: sha512-zpZDzbqJTZQC5d4LRs2EKruKWnqah+T75s+niBYFemYLtiW5TTZcWi3Q8UxHqnwTudDMuWJb233aaS2yjx3Xiw==, registry: http://registry.npm.oa.com/, tarball: https://registry.npmmirror.com/@electron-toolkit/preload/-/preload-2.0.0.tgz}
-    id: registry.npmmirror.com/@electron-toolkit/preload/2.0.0
-    name: '@electron-toolkit/preload'
-    version: 2.0.0
-    peerDependencies:
-      electron: '>=13.0.0'
-    dependencies:
-      electron: 24.6.2
-    dev: false
-
-  registry.npmmirror.com/@electron-toolkit/tsconfig/1.0.1_@types+node@18.16.19:
-    resolution: {integrity: sha512-M0Mol3odspvtCuheyujLNAW7bXq7KFNYVMRtpjFa4ZfES4MuklXBC7Nli/omvc+PRKlrklgAGx3l4VakjNo8jg==, registry: http://registry.npm.oa.com/, tarball: https://registry.npmmirror.com/@electron-toolkit/tsconfig/-/tsconfig-1.0.1.tgz}
-    id: registry.npmmirror.com/@electron-toolkit/tsconfig/1.0.1
-    name: '@electron-toolkit/tsconfig'
-    version: 1.0.1
-    peerDependencies:
-      '@types/node': '*'
-    dependencies:
-      '@types/node': 18.16.19
-    dev: true
-
-  registry.npmmirror.com/@electron-toolkit/utils/1.0.2_electron@24.6.2:
-    resolution: {integrity: sha512-EHqVijVPdjBJBivxJH5E/Gu6Dzd5GfoUH0Ilbtx+EQarwaeJLPLxRM5DzD54uuhs1b8TGDI7uMYmcJW2CKrijg==, registry: http://registry.npm.oa.com/, tarball: https://registry.npmmirror.com/@electron-toolkit/utils/-/utils-1.0.2.tgz}
-    id: registry.npmmirror.com/@electron-toolkit/utils/1.0.2
-    name: '@electron-toolkit/utils'
-    version: 1.0.2
-    peerDependencies:
-      electron: '>=13.0.0'
-    dependencies:
-      electron: 24.6.2
-      jszip: 3.10.1
-    dev: false
-
-  registry.npmmirror.com/electron-vite/1.0.24_vite@4.4.2:
-    resolution: {integrity: sha512-ZGQn7ZX+CmicZ8KfiuWb6RGdBAp/mGqRy1K9Krp+6qOMn5vyH8UG2CGyEL9GQgZDJQObF4mxAhRVtGUmLd75Eg==, registry: http://registry.npm.oa.com/, tarball: https://registry.npmmirror.com/electron-vite/-/electron-vite-1.0.24.tgz}
-    id: registry.npmmirror.com/electron-vite/1.0.24
-    name: electron-vite
-    version: 1.0.24
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': ^1.0.0
-      vite: ^3.0.0 || ^4.0.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-    dependencies:
-      '@babel/core': 7.22.8
-      '@babel/plugin-transform-arrow-functions': 7.22.5_@babel+core@7.22.8
-      cac: 6.7.14
-      esbuild: 0.17.19
-      magic-string: 0.30.1
-      picocolors: 1.0.0
-      vite: 4.4.2_@types+node@18.16.19+less@4.1.3
-    transitivePeerDependencies:
-      - supports-color
     dev: true

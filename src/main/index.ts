@@ -2,14 +2,15 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import './ipcMain'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 400,
     height: 200,
-    show: false,
     autoHideMenuBar: true,
+    resizable: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -20,6 +21,8 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
+
+  mainWindow.center()
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)

@@ -2,7 +2,7 @@
   <div class="main">
     <div class="menu">
       <n-space>
-        <n-button type="primary">
+        <n-button type="primary" @click="handleCameraClick">
           <template #icon>
             <camera-five theme="outline" size="16" fill="#fff" />
           </template>
@@ -25,6 +25,30 @@
 
 <script setup lang="ts">
 import { CameraFive, VideoOne, Topbuzz } from '@icon-park/vue-next/lib'
+const Api = window.api
+
+// 控制窗口跳转
+const createWindow = (
+  opt: unknown,
+  url?: string,
+  isCloseCurrentWindow?: boolean,
+  title?: string
+) => {
+  Api.openNewWindow(opt, url, isCloseCurrentWindow,title)
+}
+
+// 摄像头点击事件
+const handleCameraClick = () => {
+  createWindow(
+    {
+      width: 400,
+      height: 200
+    },
+    '/camera',
+    false,
+    '摄像头'
+  )
+}
 </script>
 <style lang="less">
 .main {
@@ -33,5 +57,6 @@ import { CameraFive, VideoOne, Topbuzz } from '@icon-park/vue-next/lib'
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #2f3241;
 }
 </style>

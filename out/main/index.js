@@ -3,12 +3,76 @@ const electron = require("electron");
 const path = require("path");
 const utils = require("@electron-toolkit/utils");
 const icon = path.join(__dirname, "../../resources/icon.png");
+electron.ipcMain.on("quit", (event) => {
+  const win = electron.BrowserWindow.fromWebContents(event.sender);
+  if (electron.BrowserWindow.getAllWindows().length == 0)
+    electron.app.quit();
+  else
+    win?.close();
+});
+electron.ipcMain.on(
+  "toggleRound",
+  (event, opt) => {
+    const win = electron.BrowserWindow.fromWebContents(event.sender);
+    win.setAspectRatio(opt.aspectRatio);
+    const { height } = win.getBounds();
+    if (opt.aspectRatio == 1) {
+      win.setBounds({ width: height, height });
+    } else {
+      win.setBounds({ width: Math.floor(height * 1.7), height });
+    }
+  }
+);
+electron.ipcMain.on("toggleFullscreen", (event) => {
+  const win = electron.BrowserWindow.fromWebContents(event.sender);
+  win.setFullScreen(!win.isFullScreen());
+  win.setAspectRatio(16 / 9);
+});
+electron.ipcMain.on(
+  "openNewWindow",
+  (event, opt = {}, url = "/", isCloseCurrentWindow = false, title = "") => {
+    const webContents = event.sender;
+    const currentWin = electron.BrowserWindow.fromWebContents(webContents);
+    const win = new electron.BrowserWindow({
+      ...process.platform === "linux" ? { icon } : {},
+      webPreferences: {
+        preload: path.join(__dirname, "../preload/index.js"),
+        sandbox: false
+      },
+      ...opt
+    });
+    if (utils.is.dev)
+      win.webContents.openDevTools();
+    win.on("ready-to-show", () => {
+      win.show();
+    });
+    win.webContents.setWindowOpenHandler((details) => {
+      electron.shell.openExternal(details.url);
+      return { action: "deny" };
+    });
+    win.setTitle(title);
+    if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+      console.log(process.env["ELECTRON_RENDERER_URL"] + url);
+      win.loadURL(process.env["ELECTRON_RENDERER_URL"] + url);
+    } else {
+      win.loadFile(path.join(__dirname, "../renderer/index.html"));
+    }
+    if (isCloseCurrentWindow) {
+      currentWin.close();
+    }
+  }
+);
+electron.ipcMain.on("setTitle", (event, title) => {
+  const webContents = event.sender;
+  const win = electron.BrowserWindow.fromWebContents(webContents);
+  win.setTitle(title);
+});
 function createWindow() {
   const mainWindow = new electron.BrowserWindow({
     width: 400,
     height: 200,
-    show: false,
     autoHideMenuBar: true,
+    resizable: false,
     ...process.platform === "linux" ? { icon } : {},
     webPreferences: {
       preload: path.join(__dirname, "../preload/index.js"),
@@ -18,6 +82,7 @@ function createWindow() {
   mainWindow.on("ready-to-show", () => {
     mainWindow.show();
   });
+  mainWindow.center();
   mainWindow.webContents.setWindowOpenHandler((details) => {
     electron.shell.openExternal(details.url);
     return { action: "deny" };
