@@ -4,4 +4,10 @@
   <router-view></router-view>
 </template>
 
-<style lang="less"></style>
+<style lang="less">
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+</style>
