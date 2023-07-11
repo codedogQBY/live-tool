@@ -31,7 +31,8 @@ export default defineConfig({
               'useLoadingBar',
               'NInput',
               'NButton',
-              'NSpace'
+              'NSpace',
+              'NIcon'
             ]
           }
         ]

@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import '@icon-park/vue-next/styles/index.less'
+</script>
 
 <template>
   <router-view></router-view>
