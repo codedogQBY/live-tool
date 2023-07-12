@@ -14,7 +14,7 @@ const api = {
   },
   //打开新窗口
   openNewWindow: (opt, url, isCloseCurrentWindow, title) => {
-    electron.ipcRenderer.send("openNewWindow", opt, url, isCloseCurrentWindow, title);
+    return electron.ipcRenderer.send("openNewWindow", opt, url, isCloseCurrentWindow, title);
   },
   // 设置窗口标题
   setTitle: (title) => {
@@ -23,6 +23,10 @@ const api = {
   // 拖拽窗口
   dragWindow: (offsetX, offsetY) => {
     electron.ipcRenderer.send("dragWindow", offsetX, offsetY);
+  },
+  // 设置窗口位置
+  setSubtitlePosition: () => {
+    electron.ipcRenderer.send("setSubtitlePosition");
   }
 };
 if (process.contextIsolated) {

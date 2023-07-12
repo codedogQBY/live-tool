@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f0106f-0803-49b1-b7e7-d515ef7e6ff6" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/ipcMain.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/stores/useSubtitleStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/main/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/preload/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/preload/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ipcMain.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ipcMain.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/views/subtitle/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/views/subtitle/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +39,14 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/tuntuntutu/myProject/live-tool",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm",
     "prettierjs.PrettierConfiguration.Package": "/Users/tuntuntutu/myProject/live-tool/node_modules/prettier",
+    "settings.editor.selected.configurable": "actions.on.save",
     "ts.external.directory.path": "/Users/tuntuntutu/myProject/live-tool/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -56,7 +59,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1689087351039</updated>
-      <workItem from="1689087352897" duration="6977000" />
+      <workItem from="1689087352897" duration="12627000" />
     </task>
     <servers />
   </component>

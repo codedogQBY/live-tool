@@ -73,7 +73,8 @@ const handleSubtitleClick = (): void => {
       minHeight: 60,
       alwaysOnTop: true,
       autoHideMenuBar: true,
-      frame: false
+      frame: false,
+      transparent: true
     },
     '/subtitle',
     false,
@@ -81,7 +82,7 @@ const handleSubtitleClick = (): void => {
   )
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .main {
   width: 100%;
   height: 100vh;

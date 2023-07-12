@@ -57,6 +57,7 @@ electron.ipcMain.on(
     if (isCloseCurrentWindow) {
       currentWin.close();
     }
+    return win;
   }
 );
 electron.ipcMain.on("setTitle", (event, title) => {
@@ -69,6 +70,16 @@ electron.ipcMain.on("dragWindow", (event, offsetX, offsetY) => {
   const win = electron.BrowserWindow.fromWebContents(webContents);
   const [x, y] = win.getPosition();
   win.setPosition(x + offsetX, y + offsetY);
+});
+electron.ipcMain.on("setSubtitlePosition", (event) => {
+  const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
+  const webContents = event.sender;
+  const win = electron.BrowserWindow.fromWebContents(webContents);
+  const winWidth = win.getSize()[0];
+  const winHeight = win.getSize()[1];
+  const posX = Math.round((width - winWidth) / 2);
+  const posY = Math.round(height - winHeight - 50);
+  win.setPosition(posX, posY);
 });
 function createWindow() {
   const mainWindow = new electron.BrowserWindow({

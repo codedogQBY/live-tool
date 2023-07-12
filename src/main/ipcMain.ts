@@ -1,4 +1,4 @@
-import { BrowserWindow, app, ipcMain, BrowserWindowConstructorOptions, shell } from 'electron'
+import { BrowserWindow, app, ipcMain, BrowserWindowConstructorOptions, shell,screen } from 'electron'
 import icon from '../../resources/icon.png?asset'
 import { is } from '@electron-toolkit/utils'
 import { join } from 'path'
@@ -78,6 +78,7 @@ ipcMain.on(
       // 关闭原窗口
       currentWin.close()
     }
+    return win
   }
 )
 
@@ -99,4 +100,22 @@ ipcMain.on('dragWindow', (event, offsetX: number, offsetY: number) => {
   const win = BrowserWindow.fromWebContents(webContents)
   const [x, y] = win.getPosition()
   win.setPosition(x + offsetX, y + offsetY)
+})
+
+ipcMain.on('setSubtitlePosition', (event) => {
+  // 获取屏幕的宽度和高度
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  //获取用于控制网页的webContents对象
+  const webContents = event.sender
+  //获取窗口
+  const win = BrowserWindow.fromWebContents(webContents)
+
+  // 设置窗口的位置
+  const winWidth = win.getSize()[0];
+  const winHeight = win.getSize()[1];
+  const posX = Math.round((width - winWidth) / 2);
+  const posY = Math.round(height - winHeight - 50);
+
+  // 设置窗口的位置
+  win.setPosition(posX, posY);
 })

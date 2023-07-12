@@ -19,8 +19,8 @@ const api = {
     url?: string,
     isCloseCurrentWindow?: boolean,
     title?: string
-  ): void => {
-    ipcRenderer.send('openNewWindow', opt, url, isCloseCurrentWindow, title)
+  ) => {
+   return  ipcRenderer.send('openNewWindow', opt, url, isCloseCurrentWindow, title)
   },
   // 设置窗口标题
   setTitle: (title): void => {
@@ -29,6 +29,10 @@ const api = {
   // 拖拽窗口
   dragWindow: (offsetX: number, offsetY: number): void => {
     ipcRenderer.send('dragWindow', offsetX, offsetY)
+  },
+  // 设置窗口位置
+  setSubtitlePosition: ():void => {
+    ipcRenderer.send('setSubtitlePosition')
   }
 }
 
