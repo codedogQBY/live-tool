@@ -37,9 +37,9 @@ ipcMain.on(
   (
     event: Electron.IpcMainEvent,
     opt: BrowserWindowConstructorOptions = {},
-    url: string = '/',
-    isCloseCurrentWindow: boolean = false,
-    title: string = ''
+    url = '/',
+    isCloseCurrentWindow = false,
+    title = ''
   ) => {
     //获取用于控制网页的webContents对象
     const webContents = event.sender
@@ -54,8 +54,6 @@ ipcMain.on(
       },
       ...opt
     })
-
-    if (is.dev) win.webContents.openDevTools()
 
     win.on('ready-to-show', () => {
       win.show()
@@ -73,7 +71,7 @@ ipcMain.on(
     if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
       win.loadURL(process.env['ELECTRON_RENDERER_URL'] + url)
     } else {
-      win.loadFile(join(__dirname, '../renderer/index.html'+ url))
+      win.loadFile(join(__dirname, '../renderer/index.html' + url))
     }
 
     if (isCloseCurrentWindow) {
@@ -91,4 +89,14 @@ ipcMain.on('setTitle', (event: Electron.IpcMainEvent, title: string) => {
   const win = BrowserWindow.fromWebContents(webContents)
   //设置窗口标题
   win.setTitle(title)
+})
+
+// 监听渲染进程发送的消息，并在接收到消息时处理拖拽逻辑
+ipcMain.on('dragWindow', (event, offsetX: number, offsetY: number) => {
+  //获取用于控制网页的webContents对象
+  const webContents = event.sender
+  //获取窗口
+  const win = BrowserWindow.fromWebContents(webContents)
+  const [x, y] = win.getPosition()
+  win.setPosition(x + offsetX, y + offsetY)
 })

@@ -41,8 +41,6 @@ electron.ipcMain.on(
       },
       ...opt
     });
-    if (utils.is.dev)
-      win.webContents.openDevTools();
     win.on("ready-to-show", () => {
       win.show();
     });
@@ -52,10 +50,9 @@ electron.ipcMain.on(
     });
     win.setTitle(title);
     if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
-      console.log(process.env["ELECTRON_RENDERER_URL"] + url);
       win.loadURL(process.env["ELECTRON_RENDERER_URL"] + url);
     } else {
-      win.loadFile(path.join(__dirname, "../renderer/index.html"));
+      win.loadFile(path.join(__dirname, "../renderer/index.html" + url));
     }
     if (isCloseCurrentWindow) {
       currentWin.close();
@@ -67,12 +64,18 @@ electron.ipcMain.on("setTitle", (event, title) => {
   const win = electron.BrowserWindow.fromWebContents(webContents);
   win.setTitle(title);
 });
+electron.ipcMain.on("dragWindow", (event, offsetX, offsetY) => {
+  const webContents = event.sender;
+  const win = electron.BrowserWindow.fromWebContents(webContents);
+  const [x, y] = win.getPosition();
+  win.setPosition(x + offsetX, y + offsetY);
+});
 function createWindow() {
   const mainWindow = new electron.BrowserWindow({
     width: 400,
     height: 200,
     autoHideMenuBar: true,
-    resizable: false,
+    resizable: true,
     ...process.platform === "linux" ? { icon } : {},
     webPreferences: {
       preload: path.join(__dirname, "../preload/index.js"),

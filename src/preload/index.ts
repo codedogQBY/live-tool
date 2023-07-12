@@ -4,13 +4,13 @@ import { electronAPI } from '@electron-toolkit/preload'
 // Custom APIs for renderer
 const api = {
   //退出应用
-  quit: () => ipcRenderer.send('quit'),
+  quit: (): void => ipcRenderer.send('quit'),
   // 切换圆角
-  toggleRound: (opt: { aspectRatio: number; width: number; height: number }) => {
+  toggleRound: (opt: { aspectRatio: number; width: number; height: number }): void => {
     ipcRenderer.send('toggleRound', opt)
   },
   //切换全屏
-  toggleFullscreen: () => {
+  toggleFullscreen: (): void => {
     ipcRenderer.send('toggleFullscreen')
   },
   //打开新窗口
@@ -19,12 +19,16 @@ const api = {
     url?: string,
     isCloseCurrentWindow?: boolean,
     title?: string
-  ) => {
+  ): void => {
     ipcRenderer.send('openNewWindow', opt, url, isCloseCurrentWindow, title)
   },
   // 设置窗口标题
-  setTitle: (title) => {
+  setTitle: (title): void => {
     ipcRenderer.send('setTitle', title)
+  },
+  // 拖拽窗口
+  dragWindow: (offsetX: number, offsetY: number): void => {
+    ipcRenderer.send('dragWindow', offsetX, offsetY)
   }
 }
 

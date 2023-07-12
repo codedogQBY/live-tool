@@ -8,7 +8,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/camera', component: Camera },
   { path: '/subtitle', component: Subtitle },
-  { path: '/camera', component: Record }
+  { path: '/record', component: Record }
 ]
 
 // 创建路由实例

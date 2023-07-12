@@ -19,6 +19,10 @@ const api = {
   // 设置窗口标题
   setTitle: (title) => {
     electron.ipcRenderer.send("setTitle", title);
+  },
+  // 拖拽窗口
+  dragWindow: (offsetX, offsetY) => {
+    electron.ipcRenderer.send("dragWindow", offsetX, offsetY);
   }
 };
 if (process.contextIsolated) {
