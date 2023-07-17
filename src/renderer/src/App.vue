@@ -45,5 +45,6 @@ body,
 html {
   padding: 0;
   margin: 0;
+  background-color: transparent !important;
 }
 </style>

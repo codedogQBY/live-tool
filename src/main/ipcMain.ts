@@ -1,4 +1,11 @@
-import { BrowserWindow, app, ipcMain, BrowserWindowConstructorOptions, shell,screen } from 'electron'
+import {
+  BrowserWindow,
+  app,
+  ipcMain,
+  BrowserWindowConstructorOptions,
+  shell,
+  screen
+} from 'electron'
 import icon from '../../resources/icon.png?asset'
 import { is } from '@electron-toolkit/utils'
 import { join } from 'path'
@@ -65,8 +72,10 @@ ipcMain.on(
       //取消新窗口创建
       return { action: 'deny' }
     })
-    //设置窗口标题
-    win.setTitle(title)
+    // 在窗口加载完成后，获取并更新 HTML 文件的标题
+    win.webContents.on('did-finish-load', () => {
+      win.webContents.executeJavaScript(`document.title = "${title}";`)
+    })
 
     if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
       win.loadURL(process.env['ELECTRON_RENDERER_URL'] + url)
@@ -104,18 +113,18 @@ ipcMain.on('dragWindow', (event, offsetX: number, offsetY: number) => {
 
 ipcMain.on('setSubtitlePosition', (event) => {
   // 获取屏幕的宽度和高度
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize
   //获取用于控制网页的webContents对象
   const webContents = event.sender
   //获取窗口
   const win = BrowserWindow.fromWebContents(webContents)
 
   // 设置窗口的位置
-  const winWidth = win.getSize()[0];
-  const winHeight = win.getSize()[1];
-  const posX = Math.round((width - winWidth) / 2);
-  const posY = Math.round(height - winHeight - 50);
+  const winWidth = win.getSize()[0]
+  const winHeight = win.getSize()[1]
+  const posX = Math.round((width - winWidth) / 2)
+  const posY = Math.round(height - winHeight - 50)
 
   // 设置窗口的位置
-  win.setPosition(posX, posY);
+  win.setPosition(posX, posY)
 })

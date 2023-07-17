@@ -8,23 +8,11 @@
 <script setup lang="ts">
 import { Error } from '@icon-park/vue-next/lib'
 import { onMounted, ref } from 'vue'
+import CryptoJS from 'crypto-js'
 const text = ref('')
 const Api = window.api
 onMounted(() => {
   Api.setSubtitlePosition()
-  const speech = window.webkitSpeechRecognition || window.SpeechRecognition
-  const recognition = new speech()
-  recognition.continuous = true
-  recognition.lang = 'zh-CN' // 设置为所需的语言
-  recognition.onresult = (event) => {
-    const result = event.results[event.results.length - 1]
-    const transcript = result[0].transcript
-    text.value += transcript + ' '
-    if (text.value.length > 60) {
-      text.value = text.value.slice(transcript.length + 1)
-    }
-  }
-  recognition.start()
 })
 const handleClose = () => {
   Api.quit()

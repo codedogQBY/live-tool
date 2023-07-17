@@ -25,6 +25,8 @@
 
 <script setup lang="ts">
 import { CameraFive, VideoOne, Topbuzz } from '@icon-park/vue-next/lib'
+import { useConfigStore } from '../stores/userCameraStore'
+const { config: cameraConfig } = useConfigStore()
 const Api = window.api
 
 // 控制窗口跳转
@@ -39,10 +41,18 @@ const createWindow = (
 
 // 摄像头点击事件
 const handleCameraClick = (): void => {
+  cameraConfig.rounded = false
   createWindow(
     {
       width: 400,
-      height: 200
+      height: 200,
+      minHeight: 120,
+      minWidth: 120,
+      alwaysOnTop: true,
+      autoHideMenuBar: true,
+      frame: false,
+      transparent: true,
+      backgroundColor: '#00000000' // 设置背景色为完全透明
     },
     '/camera',
     false,

@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import './ipcMain'
+import { tray } from './tray'
 
 function createWindow(): void {
   // Create the browser window.
@@ -52,6 +53,7 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+  tray()
   createWindow()
 
   app.on('activate', function () {

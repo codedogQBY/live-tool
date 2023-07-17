@@ -48,7 +48,9 @@ electron.ipcMain.on(
       electron.shell.openExternal(details.url);
       return { action: "deny" };
     });
-    win.setTitle(title);
+    win.webContents.on("did-finish-load", () => {
+      win.webContents.executeJavaScript(`document.title = "${title}";`);
+    });
     if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
       win.loadURL(process.env["ELECTRON_RENDERER_URL"] + url);
     } else {
@@ -81,6 +83,46 @@ electron.ipcMain.on("setSubtitlePosition", (event) => {
   const posY = Math.round(height - winHeight - 50);
   win.setPosition(posX, posY);
 });
+const tray = () => {
+  const tray2 = new electron.Tray(path.resolve(__dirname, "../../resources/videocameraTemplate.png"));
+  const contextMenu = electron.Menu.buildFromTemplate([
+    {
+      label: "字幕",
+      click: () => {
+        const win = new electron.BrowserWindow({
+          width: 1080,
+          height: 60,
+          maxHeight: 60,
+          minHeight: 60,
+          alwaysOnTop: true,
+          autoHideMenuBar: true,
+          frame: false,
+          transparent: true,
+          ...process.platform === "linux" ? { icon } : {},
+          webPreferences: {
+            preload: path.join(__dirname, "../preload/index.js"),
+            sandbox: false
+          }
+        });
+        win.on("ready-to-show", () => {
+          win.show();
+        });
+        win.webContents.setWindowOpenHandler((details) => {
+          electron.shell.openExternal(details.url);
+          return { action: "deny" };
+        });
+        win.setTitle("字幕");
+        if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+          win.loadURL(process.env["ELECTRON_RENDERER_URL"] + "/subtitle");
+        } else {
+          win.loadFile(path.join(__dirname, "../renderer/index.html/subtitle"));
+        }
+      }
+    },
+    { label: "退出", role: "quit" }
+  ]);
+  tray2.setContextMenu(contextMenu);
+};
 function createWindow() {
   const mainWindow = new electron.BrowserWindow({
     width: 400,
@@ -112,6 +154,7 @@ electron.app.whenReady().then(() => {
   electron.app.on("browser-window-created", (_, window) => {
     utils.optimizer.watchWindowShortcuts(window);
   });
+  tray();
   createWindow();
   electron.app.on("activate", function() {
     if (electron.BrowserWindow.getAllWindows().length === 0)

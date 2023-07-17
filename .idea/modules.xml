@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/live-tool.iml" filepath="$PROJECT_DIR$/.idea/live-tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vue-project/.idea/vue-project.iml" filepath="$PROJECT_DIR$/../vue-project/.idea/vue-project.iml" />
     </modules>
   </component>
 </project>
